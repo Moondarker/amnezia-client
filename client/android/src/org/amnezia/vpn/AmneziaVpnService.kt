@@ -98,7 +98,7 @@ class AmneziaVpnService : VpnService() {
         when (e) {
             is IllegalArgumentException,
             is VpnStartException,
-            is VpnException -> onError(e.message ?: e.toString())
+            is VpnException -> onError("${e.message ?: e.toString()}, stack trace: ${e.stackTraceToString()}")
 
             is JSONException,
             is BadConfigException -> onError("VPN config format error: ${e.message}")
